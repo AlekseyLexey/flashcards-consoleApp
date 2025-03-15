@@ -24,12 +24,16 @@ class View {
       return el;
     });
 
-  const numberedData = prettiData.map((el, index) => `${colors.yellow}${index + 1}. ${colors.yellow}${el.toUpperCase()}${EOL}`)
+    const numberedData = prettiData.map(
+      (el, index) =>
+        `${colors.yellow}${index + 1}. ${
+          colors.yellow
+        }${el.toUpperCase()}${EOL}`
+    );
 
-  return numberedData;
+    return numberedData;
+  }
 
-};
-  
   renderQuestion(rl, data) {
     const { question } = data;
 
@@ -37,7 +41,7 @@ class View {
   }
 
   isRigth(data, input) {
-    if (data.trim().toLowerCase() === input) {
+    if (data.trim().toLowerCase() === input.trim().toLowerCase()) {
       console.log(`${EOL}${colors.green}👍 Верно${colors.reset}`);
       return true;
     }

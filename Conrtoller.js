@@ -27,6 +27,7 @@ class Conrtoller {
         this.isChoose = true;
       } else {
         const questions = this.model.getQuestions();
+        console.log(questions[this.counter - 1].answer, input);
 
         if (this.counter === questions.length) {
           this.count += this.view.isRigth(
