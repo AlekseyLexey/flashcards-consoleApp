@@ -23,9 +23,11 @@ export class Model {
     const dir = dirs[number - 1];
     const data = await fs.readFile(`./topics/${dir}`, 'utf-8');
 
-    return data.split(`${EOL}${EOL}`).map((el) => {
+    this.questions = data.split(`${EOL}${EOL}`).map((el) => {
       const [question, answer] = el.split(EOL);
       return { question: question.trim(), answer: answer.trim() };
     });
+
+    return this.questions
   }
 }
