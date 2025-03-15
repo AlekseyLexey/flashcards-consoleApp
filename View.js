@@ -1,5 +1,4 @@
 const { EOL } = require('os');
-const fs = require('fs')
 
 const colors = {
   green: '\x1b[32m',
@@ -12,26 +11,25 @@ const colors = {
 
 class View {
   renderThemes(rl, data) {
-    rl.question(toPrettyThemes(data));
+    rl.question(this.toPrettyThemes(data).join(''));
   }
 
   toPrettyThemes(data) {
-    const keyword = "_flashcard_data.txt";
+    const keyword = '_flashcard_data.txt';
 
-const prettiData = data.map((el) => { 
-
-  if(el.includes(keyword)){
-    return el.replace(keyword, '');
-  }
-  return el;
-});
+    const prettiData = data.map((el) => {
+      if (el.includes(keyword)) {
+        return el.replace(keyword, '');
+      }
+      return el;
+    });
 
   const numberedData = prettiData.map((el, index) => `${colors.yellow}${index + 1}. ${colors.yellow}${el.toUpperCase()}${EOL}`)
 
   return numberedData;
 
-  }
-
+};
+  
   renderQuestion(rl, data) {
     const { question } = data;
 
@@ -46,9 +44,6 @@ const prettiData = data.map((el) => {
     console.log(`${EOL}${colors.red}👎 Не верно${colors.reset}`);
     return false;
   }
-
 }
 
 module.exports = View;
-
-
