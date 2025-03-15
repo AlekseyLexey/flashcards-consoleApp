@@ -1,26 +1,25 @@
 const { EOL } = require('os');
-const fs = require('fs')
 
 class View {
   renderThemes(rl, data) {
-    rl.question(toPrettyThemes(data));
+    rl.question(this.toPrettyThemes(data).join(''));
   }
 
   toPrettyThemes(data) {
-    const keyword = "_flashcard_data.txt";
+    const keyword = '_flashcard_data.txt';
 
-const prettiData = data.map((el) => { 
+    const prettiData = data.map((el) => {
+      if (el.includes(keyword)) {
+        return el.replace(keyword, '');
+      }
+      return el;
+    });
 
-  if(el.includes(keyword)){
-    return el.replace(keyword, '');
-  }
-  return el;
-});
+    const numberedData = prettiData.map(
+      (el, index) => `${index + 1}. ${el.toUpperCase()}${EOL}`
+    );
 
-  const numberedData = prettiData.map((el, index) => `${index + 1}. ${el.toUpperCase()}${EOL}`)
-
-  return numberedData;
-
+    return numberedData;
   }
 
   renderQuestion(rl, data) {
@@ -31,15 +30,12 @@ const prettiData = data.map((el) => {
 
   isRigth(data, input) {
     if (data.trim().toLowerCase() === input) {
-      console.log(`${EOL}ВЕРНО`);
+      console.log(`${EOL}ВЕРНО 👍`);
       return true;
     }
-    console.log(`${EOL}НЕ ВЕРНО`);
+    console.log(`${EOL}НЕ ВЕРНО 👎`);
     return false;
   }
-
 }
 
 module.exports = View;
-
-
