@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const { EOL } = require('os');
 
-export class Model {
+class Model {
   constructor() {
     this.questions = [];
   }
@@ -9,7 +9,7 @@ export class Model {
     return fs.readdir('./topics');
   }
 
-  async getQuestions() {
+  getQuestions() {
     return this.questions;
   }
 
@@ -28,6 +28,8 @@ export class Model {
       return { question: question.trim(), answer: answer.trim() };
     });
 
-    return this.questions
+    return this.questions;
   }
 }
+
+module.exports = Model;

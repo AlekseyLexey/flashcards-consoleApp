@@ -8,10 +8,16 @@ class View {
     rl.question(`${prettiData}`);
   }
 
-  renderQuestion(rl, data) {
+  renderQuestion(rl, data, input) {
     // console.log(data);
 
-    const { question } = data;
+    const { question, answer } = data;
+
+    if (answer === input) {
+      console.log('врено');
+    } else {
+      console.log('НЕ ВЕРНО');
+    }
 
     rl.question(`${question}`);
   }

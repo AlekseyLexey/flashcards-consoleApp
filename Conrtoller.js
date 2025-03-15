@@ -36,7 +36,7 @@ class Conrtoller {
         if (this.counter === questions.length - 1) {
           this.rl.close();
         } else {
-          this.view.renderQuestion(this.rl, questions[this.counter]);
+          this.view.renderQuestion(this.rl, questions[this.counter], input);
           this.changeCounter();
         }
       }
