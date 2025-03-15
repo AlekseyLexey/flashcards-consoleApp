@@ -3,7 +3,8 @@ const { EOL } = require('os');
 
 export class Model {
   getThemes() {
-    return fs.readdir('./topics')
+    return fs
+      .readdir('./topics')
       .then((dirs) => dirs)
       .catch((err) => {
         console.error('Ошибка:', err);
