@@ -8,18 +8,21 @@ class View {
     rl.question(`${prettiData}`);
   }
 
-  renderQuestion(rl, data, input) {
+  renderQuestion(rl, data) {
     // console.log(data);
 
-    const { question, answer } = data;
-
-    if (answer === input) {
-      console.log('врено');
-    } else {
-      console.log('НЕ ВЕРНО');
-    }
+    const { question } = data;
 
     rl.question(`${question}`);
+  }
+
+  isRigth(data, input) {
+    if (data.trim().toLowerCase() === input) {
+      console.log(`${EOL}ВЕРНО`);
+      return true;
+    }
+    console.log(`${EOL}НЕ ВЕРНО`);
+    return false;
   }
 }
 
