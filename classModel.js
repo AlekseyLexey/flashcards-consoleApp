@@ -1,7 +1,7 @@
 const fs = require('fs').promises;
 const { EOL } = require('os');
 
-export class Model {
+class Model {
   constructor() {
     this.questions = [];
   }
@@ -29,3 +29,5 @@ export class Model {
     });
   }
 }
+
+module.exports = Model;
