@@ -29,6 +29,7 @@ class Model {
     });
 
     return this.questions;
+    
   }
 }
 
