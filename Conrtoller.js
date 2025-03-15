@@ -11,21 +11,35 @@ class Conrtoller {
     this.isChoose = false;
     this.rl = readline.createInterface({ input, output });
 
-    this.model.getThemes().then((data = this.view.renderThemes(this.rl, data)));
+    this.model
+      .getThemes()
+      .then((data) => this.view.renderThemes(this.rl, data));
+
     this.rl.on('line', async (input) => {
-      if (this.isChoose) {
-        await this.model.setQuestions(input);
+      if (!this.isChoose) {
+        console.log('isChoose!!!!');
+
+        const questions = await this.model.setQuestionsData(Number(input));
+
+        if (this.counter === questions.length) {
+          this.rl.close();
+        }
+
+        this.view.renderQuestion(this.rl, questions[this.counter]);
+        this.changeCounter();
         this.isChoose = true;
+      } else {
+        console.log('QUESTOINS');
+        const questions = this.model.getQuestions();
+        console.log(questions);
+
+        if (this.counter === questions.length - 1) {
+          this.rl.close();
+        } else {
+          this.view.renderQuestion(this.rl, questions[this.counter]);
+          this.changeCounter();
+        }
       }
-
-      const questions = this.model.getQuestions();
-
-      if (counter === questions.length) {
-        this.rl.close();
-      }
-
-      this.view.renderQuestion(this.rl, questions[counter]);
-      this.changeCounter();
     });
   }
 
