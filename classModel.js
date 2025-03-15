@@ -6,11 +6,11 @@ export class Model {
     this.questions = [];
   }
   getThemes() {
-    return fs.readdir('./topics')
+    return fs.readdir('./topics');
   }
 
   async getQuestions() {
-     return this.questions;
+    return this.questions;
   }
 
   async setQuestionsData(number) {
