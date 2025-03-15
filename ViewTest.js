@@ -1,4 +1,5 @@
 const { EOL } = require('os');
+
 class View {
   renderThemes(rl, data) {
     const prettiData = data.map((el) => el);

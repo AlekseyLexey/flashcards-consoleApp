@@ -20,7 +20,7 @@ class Conrtoller {
 
       const questions = this.model.getQuestions();
 
-      if (counter === questons.length) {
+      if (counter === questions.length) {
         this.rl.close();
       }
 
